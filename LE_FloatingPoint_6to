@@ -1,0 +1,40 @@
+#include <stdio.h>
+#define cant_exp 7
+#define cant_man 22
+
+void mascara(void);
+
+union coma{
+    struct{
+        unsigned int mantisa : 23;
+        unsigned int exponente : 8;
+        unsigned int signo : 1;
+    };
+    float num;
+};
+
+int main(void) {
+    mascara();
+    return 0;
+}
+
+void mascara(void)
+{
+
+    int n;
+    union coma u;
+    printf("Bienvenido, ingrese su número: ");
+    scanf("%f", &u.num);
+    if (u.signo & 0x01) printf("1");
+    else printf("0");
+    for(n=cant_exp;n>=0;n--) // Imprimo el exponente
+    {
+        if ((u.exponente>>n & 0x01)==1) printf("1");
+        else printf("0");
+    }
+    for(n=cant_man;n>=0;n--) // Imprimo la mantisa
+    {
+        if ((u.mantisa>>n & 0x01)==1) printf("1");
+        else printf("0");
+    }
+}
