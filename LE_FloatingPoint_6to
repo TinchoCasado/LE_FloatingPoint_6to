@@ -1,14 +1,17 @@
 #include <stdio.h>
-#define cant_exp 7
 #define cant_man 22
+#define cant_exp 7
+#define bits_man 23
+#define bits_exp 8
+#define bits_sig 1
 
 void mascara(void);
 
 union coma{
     struct{
-        unsigned int mantisa : 23;
-        unsigned int exponente : 8;
-        unsigned int signo : 1;
+        unsigned int mantisa : bits_man;
+        unsigned int exponente : bits_exp;
+        unsigned int signo : bits_sig;
     };
     float num;
 };
@@ -20,19 +23,17 @@ int main(void) {
 
 void mascara(void)
 {
-
-    int n;
     union coma u;
     printf("Bienvenido, ingrese su número: ");
     scanf("%f", &u.num);
-    if (u.signo & 0x01) printf("1");
+    if (u.signo & 0x01) printf("1"); // Imprimo el exponente
     else printf("0");
-    for(n=cant_exp;n>=0;n--) // Imprimo el exponente
+    for(int n=cant_exp;n>=0;n--) // Recorro e imprimo el exponente
     {
         if ((u.exponente>>n & 0x01)==1) printf("1");
         else printf("0");
     }
-    for(n=cant_man;n>=0;n--) // Imprimo la mantisa
+    for(int n=cant_man;n>=0;n--) // Recorro e imprimo la mantisa
     {
         if ((u.mantisa>>n & 0x01)==1) printf("1");
         else printf("0");
