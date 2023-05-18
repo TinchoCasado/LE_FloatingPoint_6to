@@ -28,12 +28,12 @@ void mascara(void)
     scanf("%f", &u.num);
     if (u.signo & 0x01) printf("1"); // Imprimo el exponente
     else printf("0");
-    for(int n=cant_exp;n>=0;n--) // Recorro e imprimo el exponente
+    for(int n=(bits_exp-1);n>=0;n--) // Recorro e imprimo el exponente
     {
         if ((u.exponente>>n & 0x01)==1) printf("1");
         else printf("0");
     }
-    for(int n=cant_man;n>=0;n--) // Recorro e imprimo la mantisa
+    for(int n=(bits_man-1);n>=0;n--) // Recorro e imprimo la mantisa
     {
         if ((u.mantisa>>n & 0x01)==1) printf("1");
         else printf("0");
