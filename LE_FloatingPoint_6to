@@ -1,6 +1,4 @@
 #include <stdio.h>
-#define cant_man 22
-#define cant_exp 7
 #define bits_man 23
 #define bits_exp 8
 #define bits_sig 1
