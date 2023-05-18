@@ -7,9 +7,9 @@ void mascara(void);
 
 union coma{
     struct{
-        unsigned int mantisa : bits_man;
-        unsigned int exponente : bits_exp;
-        unsigned int signo : bits_sig;
+        unsigned int mantisa : bits_man;    //asigno 23 bits a la mantisa
+        unsigned int exponente : bits_exp;  //asigno 8 bits al exponente
+        unsigned int signo : bits_sig;      //asigno 1 bit al signo
     };
     float num;
 };
